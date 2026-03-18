@@ -1,0 +1,640 @@
+/* =================================
+   Variables de color y espaciado
+   ================================= */
+:root {
+  --color-bg-white: white;
+  --color-bg-light: #F9F3EB;
+  --color-bg-mid: #EBE6DE;
+  --color-text-dark: #2E2413;
+  --color-text-gray: #555;
+  --color-text-light-gray: #666;
+  --color-note-bg: #f8f4f0;
+  --color-note-border: #d4c9b5;
+  --color-black: #000;
+  --color-bg-light-alpha: rgba(235, 230, 222, 0.4);
+
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+}
+
+/* =================================
+   Tipografías (Poltawski Nowy)
+   ================================= */
+@font-face {
+  font-family: 'Poltawski Nowy';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('PoltawskiNowy-Regular'),
+    url('../fonts/poltawski-nowy/PoltawskiNowy-Regular.woff2') format('woff2'),
+    url('../fonts/poltawski-nowy/PoltawskiNowy-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poltawski Nowy';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('PoltawskiNowy-Bold'),
+    url('../fonts/poltawski-nowy/PoltawskiNowy-Bold.woff2') format('woff2'),
+    url('../fonts/poltawski-nowy/PoltawskiNowy-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poltawski Nowy';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('PoltawskiNowy-Italic'),
+    url('../fonts/poltawski-nowy/PoltawskiNowy-Italic.woff2') format('woff2'),
+    url('../fonts/poltawski-nowy/PoltawskiNowy-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poltawski Nowy';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: local('PoltawskiNowy-BoldItalic'),
+    url('../fonts/poltawski-nowy/PoltawskiNowy-BoldItalic.woff2') format('woff2'),
+    url('../fonts/poltawski-nowy/PoltawskiNowy-BoldItalic.woff') format('woff');
+}
+
+/* =================================
+   Reset básico de texto
+   (no toca clases de Bootstrap)
+   ================================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+figure,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+}
+
+/* =================================
+   Elementos base
+   ================================= */
+img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-overlay-video:hover {
+  cursor: pointer;
+
+  &+.play-video {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.play-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  transition: width 0.3s ease, height 0.3s ease;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    width: 60px;
+    height: 60px;
+    opacity: 1;
+  }
+
+  50% {
+    width: 66px;
+    height: 66px;
+    opacity: 0.7;
+  }
+
+  100% {
+    width: 60px;
+    height: 60px;
+    opacity: 1;
+  }
+}
+
+body {
+  margin: 0;
+  line-height: 1.6;
+  font-family: 'Poltawski Nowy', serif;
+  background-color: var(--color-text-gray);
+  color: var(--color-text-dark);
+}
+
+.container {
+  max-width: 100%;
+  padding: 6rem;
+}
+
+header h2 {
+  color: var(--color-text-gray);
+}
+
+body h3 {
+  padding-bottom: var(--space-sm);
+}
+
+p {
+  font-size: 21px;
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+p.note {
+  padding: 0;
+  color: var(--color-text-light-gray);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-style: italic;
+  text-align: left;
+  text-justify: initial;
+  -webkit-hyphens: initial;
+  -ms-hyphens: initial;
+  hyphens: initial;
+}
+
+/* =================================
+   Hero principal (#s1)
+   ================================= */
+header#s1 {
+  position: relative;
+  background-color: var(--color-bg-light);
+  background-image: url(/src/images/bg-mid.webp);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  min-height: 600px;
+  overflow: hidden;
+
+  & img {
+    height: 90vh;
+    object-position: 50% 20%;
+  }
+
+}
+
+/* Contenedor de imagen dentro del header */
+header#s1 .header-image {
+  max-height: 80vh;
+}
+
+header#s1 .header-image img {
+  object-position: 100% 30%;
+}
+
+/* =================================
+   Secciones principales
+   ================================= */
+main {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+
+article {
+  background-color: var(--color-bg-white);
+}
+
+main section {
+  min-height: 600px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+main section:nth-of-type(odd) {
+  /* s3, s5, s7, s9 */
+  background-color: var(--color-bg-white);
+  background-image: url(/src/images/bg-light.webp);
+}
+
+main section:nth-of-type(even) {
+  /* s2, s4, s6, s8 */
+  background-color: var(--color-bg-mid);
+  background-image: url(/src/images/bg-mid.webp);
+}
+
+footer {
+  background-color: var(--color-bg-mid);
+  background-image: url(/src/images/bg-mid.webp);
+}
+
+/* =================================
+   Utilidades muy específicas
+   (no colisionan con Bootstrap)
+   ================================= */
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.image-right {
+  justify-self: end;
+  width: 100%;
+  max-width: 500px;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.h-lg-100px {
+  height: 100px;
+}
+
+.h-lg-150px {
+  height: 150px;
+}
+
+.h-lg-200px {
+  height: 200px;
+}
+
+.h-lg-250px {
+  height: 250px;
+}
+
+.h-lg-300px {
+  height: 300px;
+}
+
+.h-lg-400px {
+  height: 400px;
+}
+
+.h-lg-500px {
+  height: 500px;
+}
+
+.h-lg-600px {
+  height: 600px;
+}
+
+/* =================================
+   Responsive
+   ================================= */
+
+/* Tablet */
+@media (max-width: 991px) {
+  /* header#s1 {
+    & .header-text {
+      padding: 4rem;
+    }
+  } */
+
+  article {
+    max-width: 100%;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 4rem;
+
+    & .row {
+      margin: 0;
+      padding: 0;
+    }
+
+    & .row>* {
+      padding: 0;
+    }
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  p.note {
+    font-size: 12px;
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-xs);
+    color: var(--color-text-light-gray);
+    text-transform: uppercase;
+    font-style: italic;
+    text-align: left;
+    text-justify: initial;
+    -webkit-hyphens: initial;
+    -ms-hyphens: initial;
+    hyphens: initial;
+  }
+
+  header#s1 .header-image img {
+    object-position: 50% 50%;
+  }
+
+  /* =================================
+   Utilidades muy específicas
+   (no colisionan con Bootstrap)
+   ================================= */
+  .text-left {
+    text-align: left;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .image-right {
+    justify-self: end;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  .h-md-100px {
+    height: 100px;
+  }
+
+  .h-md-150px {
+    height: 150px;
+  }
+
+  .h-md-200px {
+    height: 200px;
+  }
+
+  .h-md-250px {
+    height: 250px;
+  }
+
+  .h-md-300px {
+    height: 300px;
+  }
+
+  .h-md-400px {
+    height: 400px;
+  }
+
+  .h-md-500px {
+    height: 500px;
+  }
+
+  .h-md-600px {
+    height: 600px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  h1 {
+    font-size: 42px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  article {
+    max-width: 100%;
+  }
+
+  .container {
+    padding: var(--space-xl) var(--space-xl);
+  }
+
+  header#s1 {
+    height: 80vh;
+    color: var(--color-bg-light);
+    background-image: url(/src/images/hero-robert_pytel.webp);
+    background-size: cover;
+    background-position: 50% 20%;
+  }
+
+  header#s1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, var(--color-black) 0%, transparent 80%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header#s1 .header-image {
+    max-height: 100vh;
+  }
+
+  header#s1 .header-image img {
+    display: none;
+  }
+
+  header h2 {
+    color: var(--color-text-light);
+    /* font-size: 20px; */
+    text-align: center;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  /* =================================
+   Utilidades muy específicas
+   (no colisionan con Bootstrap)
+   ================================= */
+  .text-left {
+    text-align: left;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .image-right {
+    justify-self: end;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  .h-100px {
+    height: 100px;
+  }
+
+  .h-150px {
+    height: 150px;
+  }
+
+  .h-200px {
+    height: 200px;
+  }
+
+  .h-250px {
+    height: 250px;
+  }
+
+  .h-300px {
+    height: 300px;
+  }
+}
+
+
+/* =================================
+   Control de imágenes
+   ================================= */
+
+figure {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Específicos */
+
+.fig-1 {
+  transform: scale(1.4) translate(12px, -4%);
+}
+
+.fig-2 {
+  transform: scale(1.2) translate(-6px, 3%);
+}
+
+.fig-3 {
+  transform: scale(2) translate(-10px, 10px);
+  object-position: 50% 50%;
+}
+
+.fig-4 {
+  transform: scale(1.4) translate(27px, -19px);
+}
+
+.fig-5 {
+  /* transform: scale(1.2) translate(31px, -1px); */
+  object-position: 45% 40%;
+}
+
+.fig-6 {
+  transform: scale(1) translate(0, 0%);
+  object-position: 53% 40%;
+}
+
+.fig-7 {
+  transform: scale(1.3) translate(10px, 8%);
+  object-position: 50% 30%;
+}
+
+.fig-8 {
+  object-position: 50% 70%;
+}
+
+.fig-10 {
+  transform: scale(1.3);
+  object-position: 50% 50%;
+}
+
+.fig-11 {
+  object-position: 50% 20%;
+}
+
+.fig-17 {
+  height: 100vh;
+  object-position: 50% 5%;
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+  .fig-1 {
+    transform: scale(1.2) translate(12px, -4%);
+  }
+
+  .fig-2 {
+    transform: scale(1.1) translate(-6px, 3%);
+  }
+
+  .fig-3 {
+    transform: scale(1.05) translate(-26px, -20%);
+  }
+
+  .fig-4 {
+    transform: scale(1.5) translate(21px, 10px);
+  }
+
+  .fig-5 {
+    transform: scale(1.3) translate(14px, 18px);
+  }
+
+  .fig-6 {
+    transform: scale(1.05) translate(-1px, 0%);
+    object-position: 50% 40%;
+  }
+
+  .fig-7 {
+    transform: scale(1.2) translate(10px, 8%);
+    object-position: 50% 30%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+
+
+  /* Específicos */
+
+  .fig-1 {
+    transform: scale(1.4) translate(12px, -4%);
+  }
+
+  .fig-2 {
+    transform: scale(1.2) translate(-6px, 3%);
+  }
+
+  .fig-3 {
+    transform: scale(1.1) translate(-17px, -20%);
+  }
+
+  .fig-4 {
+    transform: scale(1.8) translate(21px, 10px);
+  }
+
+  .fig-5 {
+    transform: scale(1.5) translate(14px, 18px);
+  }
+
+  .fig-6 {
+    transform: scale(1.05) translate(-1px, 0%);
+    object-position: 50% 40%;
+  }
+
+  .fig-7 {
+    transform: scale(1.3) translate(10px, 8%);
+    object-position: 50% 30%;
+  }
+
+}
