@@ -564,6 +564,11 @@ figure {
 }
 
 .fig-17 {
+  height: 90vh;
+  object-position: 45% 5%;
+}
+
+.fig-18 {
   height: 100vh;
   object-position: 50% 5%;
 }
